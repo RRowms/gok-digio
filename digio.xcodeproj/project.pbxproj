@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		50965A18275A781300AEA4E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A17275A781300AEA4E0 /* AppDelegate.swift */; };
 		50965A1A275A781300AEA4E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A19275A781300AEA4E0 /* SceneDelegate.swift */; };
-		50965A1C275A781300AEA4E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A1B275A781300AEA4E0 /* ViewController.swift */; };
+		50965A1C275A781300AEA4E0 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A1B275A781300AEA4E0 /* HomeController.swift */; };
 		50965A1F275A781300AEA4E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50965A1D275A781300AEA4E0 /* Main.storyboard */; };
 		50965A21275A781500AEA4E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50965A20275A781500AEA4E0 /* Assets.xcassets */; };
 		50965A24275A781500AEA4E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50965A22275A781500AEA4E0 /* LaunchScreen.storyboard */; };
 		50965A2F275A781500AEA4E0 /* digioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A2E275A781500AEA4E0 /* digioTests.swift */; };
 		50965A39275A781500AEA4E0 /* digioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A38275A781500AEA4E0 /* digioUITests.swift */; };
 		50965A3B275A781500AEA4E0 /* digioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A3A275A781500AEA4E0 /* digioUITestsLaunchTests.swift */; };
+		50BDD498276125F300D27B44 /* BottomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BDD497276125F300D27B44 /* BottomCollectionViewCell.swift */; };
+		50F3B493275EC26E0030BD76 /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F3B492275EC26E0030BD76 /* TopCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,7 @@
 		50965A14275A781300AEA4E0 /* digio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = digio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50965A17275A781300AEA4E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50965A19275A781300AEA4E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		50965A1B275A781300AEA4E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		50965A1B275A781300AEA4E0 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		50965A1E275A781300AEA4E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50965A20275A781500AEA4E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50965A23275A781500AEA4E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		50965A34275A781500AEA4E0 /* digioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = digioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50965A38275A781500AEA4E0 /* digioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = digioUITests.swift; sourceTree = "<group>"; };
 		50965A3A275A781500AEA4E0 /* digioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = digioUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		50BDD497276125F300D27B44 /* BottomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCollectionViewCell.swift; sourceTree = "<group>"; };
+		50F3B492275EC26E0030BD76 /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +103,10 @@
 		50965A16275A781300AEA4E0 /* digio */ = {
 			isa = PBXGroup;
 			children = (
+				50F3B491275EC2040030BD76 /* models */,
+				50F3B490275EC1690030BD76 /* controllers */,
 				50965A17275A781300AEA4E0 /* AppDelegate.swift */,
 				50965A19275A781300AEA4E0 /* SceneDelegate.swift */,
-				50965A1B275A781300AEA4E0 /* ViewController.swift */,
 				50965A1D275A781300AEA4E0 /* Main.storyboard */,
 				50965A20275A781500AEA4E0 /* Assets.xcassets */,
 				50965A22275A781500AEA4E0 /* LaunchScreen.storyboard */,
@@ -125,6 +130,23 @@
 				50965A3A275A781500AEA4E0 /* digioUITestsLaunchTests.swift */,
 			);
 			path = digioUITests;
+			sourceTree = "<group>";
+		};
+		50F3B490275EC1690030BD76 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				50965A1B275A781300AEA4E0 /* HomeController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		50F3B491275EC2040030BD76 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				50F3B492275EC26E0030BD76 /* TopCollectionViewCell.swift */,
+				50BDD497276125F300D27B44 /* BottomCollectionViewCell.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,8 +302,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50965A1C275A781300AEA4E0 /* ViewController.swift in Sources */,
+				50F3B493275EC26E0030BD76 /* TopCollectionViewCell.swift in Sources */,
+				50965A1C275A781300AEA4E0 /* HomeController.swift in Sources */,
 				50965A18275A781300AEA4E0 /* AppDelegate.swift in Sources */,
+				50BDD498276125F300D27B44 /* BottomCollectionViewCell.swift in Sources */,
 				50965A1A275A781300AEA4E0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
