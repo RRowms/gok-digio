@@ -17,20 +17,32 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     let topReuseIdentifier = "topCollectionViewCell"
     let bottomReuseIdentifier = "bottomCollectionViewCell"
 
-    var topItems = ["https://s3-sa-east-1.amazonaws.com/digio-exame/recharge_banner.png", "https://s3-sa-east-1.amazonaws.com/digio-exame/uber_banner.png"]
-    var bottomItems = ["https://s3-sa-east-1.amazonaws.com/digio-exame/xbox_icon.png", "https://s3-sa-east-1.amazonaws.com/digio-exame/google_play_icon.png"]
+    var topItems: [Spotlight] = []
+    var bottomItems: [Product] = []
+    var cashBanner: [Cash] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let digioCashImg = "https://s3-sa-east-1.amazonaws.com/digio-exame/cash_banner.png"
-        if let imgdata = NSData(contentsOf: URL(string: digioCashImg)!) {
+        DigioApiManager.getData { data, error in
+            guard let data = data else {
+                print(error as Any)
+                return
+            }
+            self.topItems = data.spotlight
+            self.topCollectionView.reloadData()
+            self.bottomItems = data.products
+            self.bottomCollectionView.reloadData()
 
-            let digioCashImg = UIImage(data: imgdata as Data)
-            digioCashBanner.image = digioCashImg
-            digioCashBanner.layer.masksToBounds = true
-            digioCashBanner.layer.cornerRadius = 15
+            let digioCashImg = data.cash.bannerURL
+            if let imgdata = NSData(contentsOf: URL(string: digioCashImg)!) {
 
+                let digioCashImg = UIImage(data: imgdata as Data)
+                self.digioCashBanner.image = digioCashImg
+                self.digioCashBanner.layer.masksToBounds = true
+                self.digioCashBanner.layer.cornerRadius = 15
+
+            }
         }
     }
 
@@ -56,7 +68,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: bottomReuseIdentifier, for: indexPath as IndexPath) as! BottomCollectionViewCell
             // swiftlint:enable force_cast
 
-            let currImage = self.bottomItems[indexPath.row]
+            let currImage = self.bottomItems[indexPath.row].imageURL
             if let data = NSData(contentsOf: URL(string: currImage)!) {
                 let cellImage = UIImage(data: data as Data)
                 cell.bottomCellImage.image = cellImage
@@ -80,7 +92,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: topReuseIdentifier, for: indexPath as IndexPath) as! TopCollectionViewCell
         // swiftlint:enable force_cast
 
-        let currImage = self.topItems[indexPath.row]
+        let currImage = self.topItems[indexPath.row].bannerURL
         if let data = NSData(contentsOf: URL(string: currImage)!) {
 
             let cellImage = UIImage(data: data as Data)
@@ -113,7 +125,9 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         if (collectionView == bottomCollectionView) {
             let detailViewController =  storyboard?.instantiateViewController(withIdentifier: "DetailController") as? DetailController
 
-            detailViewController?.detailUrl = self.bottomItems[indexPath.row]
+            detailViewController?.detailUrl = self.bottomItems[indexPath.row].imageURL
+            detailViewController?.detailName = self.bottomItems[indexPath.row].name
+            detailViewController?.detailText = self.bottomItems[indexPath.row].productDescription
 
             self.navigationController?.pushViewController(detailViewController!, animated: true)
 

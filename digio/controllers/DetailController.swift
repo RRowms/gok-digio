@@ -10,6 +10,8 @@ import UIKit
 class DetailController: UIViewController {
 
     var detailUrl = ""
+    var detailName = ""
+    var detailText = ""
 
     @IBOutlet weak var detailImageView: UIView!
     @IBOutlet weak var detailContainerView: UIView!
@@ -55,7 +57,8 @@ class DetailController: UIViewController {
 
         }
 
-        detailTextBox.text = detailUrl
+        detailLabel.text = detailName
+        detailTextBox.text = detailText
     }
 
     override func viewWillAppear(_ animated: Bool) {
