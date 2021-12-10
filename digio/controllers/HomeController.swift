@@ -18,7 +18,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     let bottomReuseIdentifier = "bottomCollectionViewCell"
 
     var topItems = ["https://s3-sa-east-1.amazonaws.com/digio-exame/recharge_banner.png", "https://s3-sa-east-1.amazonaws.com/digio-exame/uber_banner.png"]
-    var bottomItems = ["https://s3-sa-east-1.amazonaws.com/digio-exame/xbox_icon.png", "https://s3-sa-east-1.amazonaws.com/digio-exame/google_play_icon.png", "https://s3-sa-east-1.amazonaws.com/digio-exame/level_up_icon.png"]
+    var bottomItems = ["https://s3-sa-east-1.amazonaws.com/digio-exame/xbox_icon.png", "https://s3-sa-east-1.amazonaws.com/digio-exame/google_play_icon.png"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,11 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
             digioCashBanner.layer.cornerRadius = 15
 
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
     // MARK: - UICollectionViewDataSource protocol
@@ -104,6 +109,15 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
+
+        if (collectionView == bottomCollectionView) {
+            let detailViewController =  storyboard?.instantiateViewController(withIdentifier: "DetailController") as? DetailController
+
+            detailViewController?.detailUrl = self.bottomItems[indexPath.row]
+
+            self.navigationController?.pushViewController(detailViewController!, animated: true)
+
+        }
     }
 
 }
