@@ -21,28 +21,50 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     var bottomItems: [Product] = []
     var cashBanner: [Cash] = []
 
+    var checkValid: Bool = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        DigioApiManager.getData { data, error in
-            guard let data = data else {
-                print(error as Any)
-                return
+        if NetworkMonitor.shared.isConnected {
+            print("Connected to the internet!")
+        } else {
+            print("No internet connection!")
+            alert(message: "Não foi possível acessar os dados, verique sua conexão com a internet!")
+            NetworkMonitor.shared.stopMonitoring()
+        }
+
+        do {
+            try DigioApiManager.getData { data, error in
+                guard let data = data else {
+                    print(error as Any)
+                    return
+                }
+                self.topItems = data.spotlight
+                self.topCollectionView.reloadData()
+                self.bottomItems = data.products
+                self.bottomCollectionView.reloadData()
+
+                let digioCashImg = data.cash.bannerURL
+                do {
+                    self.checkValid = try validateUrl(urlString: digioCashImg)
+                } catch {
+                    print(error)
+                }
+
+                if let imgdata = NSData(contentsOf: URL(string: digioCashImg)!), self.checkValid == true {
+
+                    let digioCashImg = UIImage(data: imgdata as Data)
+                    self.digioCashBanner.image = digioCashImg
+                    self.digioCashBanner.layer.masksToBounds = true
+                    self.digioCashBanner.layer.cornerRadius = 15
+
+                }
             }
-            self.topItems = data.spotlight
-            self.topCollectionView.reloadData()
-            self.bottomItems = data.products
-            self.bottomCollectionView.reloadData()
 
-            let digioCashImg = data.cash.bannerURL
-            if let imgdata = NSData(contentsOf: URL(string: digioCashImg)!) {
-
-                let digioCashImg = UIImage(data: imgdata as Data)
-                self.digioCashBanner.image = digioCashImg
-                self.digioCashBanner.layer.masksToBounds = true
-                self.digioCashBanner.layer.cornerRadius = 15
-
-            }
+        } catch {
+            print(error)
+            alert(message: "Não foi possível acessar os dados, verique sua conexão com a internet!")
         }
     }
 
@@ -69,14 +91,17 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
             // swiftlint:enable force_cast
 
             let currImage = self.bottomItems[indexPath.row].imageURL
-            if let data = NSData(contentsOf: URL(string: currImage)!) {
+            do {
+                self.checkValid = try validateUrl(urlString: currImage)
+            } catch {
+                print(error)
+            }
+            if let data = NSData(contentsOf: URL(string: currImage)!), self.checkValid == true {
                 let cellImage = UIImage(data: data as Data)
                 cell.bottomCellImage.image = cellImage
-
             }
 
             cell.layer.cornerRadius = 15.0
-            cell.layer.borderWidth = 0.0
             cell.layer.shadowColor = UIColor.black.cgColor
             cell.layer.shadowOffset = CGSize(width: 0, height: 3)
             cell.layer.shadowRadius = 3.0
@@ -93,7 +118,12 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         // swiftlint:enable force_cast
 
         let currImage = self.topItems[indexPath.row].bannerURL
-        if let data = NSData(contentsOf: URL(string: currImage)!) {
+        do {
+            self.checkValid = try validateUrl(urlString: currImage)
+        } catch {
+            print(error)
+        }
+        if let data = NSData(contentsOf: URL(string: currImage)!), self.checkValid == true {
 
             let cellImage = UIImage(data: data as Data)
             cell.topCellImage.image = cellImage
@@ -102,7 +132,6 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
             cell.topCellImage.layer.cornerRadius = 15
 
             cell.layer.cornerRadius = 15.0
-            cell.layer.borderWidth = 0.0
             cell.layer.shadowColor = UIColor.black.cgColor
             cell.layer.shadowOffset = CGSize(width: 0, height: 3)
             cell.layer.shadowRadius = 3.0
@@ -134,4 +163,13 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
 
+}
+
+extension UIViewController {
+  func alert(message: String, title: String = "") {
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+    alertController.addAction(OKAction)
+    self.present(alertController, animated: true, completion: nil)
+  }
 }

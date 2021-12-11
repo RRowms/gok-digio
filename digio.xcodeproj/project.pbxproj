@@ -10,6 +10,7 @@
 		5009F8D427638E210084725C /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009F8D327638E210084725C /* DetailController.swift */; };
 		5009F8D62763D5080084725C /* DigioDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009F8D52763D5080084725C /* DigioDataModel.swift */; };
 		5009F8D92763D6080084725C /* DigioApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009F8D82763D6080084725C /* DigioApiManager.swift */; };
+		50401A7627653C61007576B0 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50401A7527653C61007576B0 /* NetworkMonitor.swift */; };
 		50965A18275A781300AEA4E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A17275A781300AEA4E0 /* AppDelegate.swift */; };
 		50965A1A275A781300AEA4E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A19275A781300AEA4E0 /* SceneDelegate.swift */; };
 		50965A1C275A781300AEA4E0 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A1B275A781300AEA4E0 /* HomeController.swift */; };
@@ -44,6 +45,7 @@
 		5009F8D327638E210084725C /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		5009F8D52763D5080084725C /* DigioDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigioDataModel.swift; sourceTree = "<group>"; };
 		5009F8D82763D6080084725C /* DigioApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigioApiManager.swift; sourceTree = "<group>"; };
+		50401A7527653C61007576B0 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		50965A14275A781300AEA4E0 /* digio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = digio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50965A17275A781300AEA4E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50965A19275A781300AEA4E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				5009F8D82763D6080084725C /* DigioApiManager.swift */,
+				50401A7527653C61007576B0 /* NetworkMonitor.swift */,
 			);
 			path = manager;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				50BDD498276125F300D27B44 /* BottomCollectionViewCell.swift in Sources */,
 				5009F8D62763D5080084725C /* DigioDataModel.swift in Sources */,
 				5009F8D427638E210084725C /* DetailController.swift in Sources */,
+				50401A7627653C61007576B0 /* NetworkMonitor.swift in Sources */,
 				50965A1A275A781300AEA4E0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
