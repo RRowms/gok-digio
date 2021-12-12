@@ -81,7 +81,7 @@ extension URLSession {
         }
     }
 
-    func digioTask(with apiUrl: URL, completionHandler: @escaping (Digio?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    func digioTask(with apiUrl: URL, completionHandler: @escaping (Digio?, URLResponse?, Error?) -> Void) throws -> URLSessionDataTask {
         return self.codableTask(with: apiUrl, completionHandler: completionHandler)
     }
 }

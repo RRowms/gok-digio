@@ -24,7 +24,7 @@ final class NetworkMonitor {
         case unknown
     }
 
-    private init() {
+    public init() {
         monitor = NWPathMonitor()
     }
 

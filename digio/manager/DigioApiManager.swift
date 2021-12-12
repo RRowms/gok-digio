@@ -8,59 +8,40 @@
 import Foundation
 import UIKit
 
-enum CustomError: Error {
-    case invalidUrl
-    case urlEmpty
-    case unsupportedUrl
-}
-
-func validateUrl(urlString: String) throws -> Bool {
-
-    guard !urlString.isEmpty else {
-        throw CustomError.urlEmpty
-    }
-
-    guard let urlToValidate = URL(string: urlString) else {
-        throw CustomError.invalidUrl
-    }
-
-    guard UIApplication.shared.canOpenURL(urlToValidate as URL) else {
-        throw CustomError.unsupportedUrl
-    }
-
-    return true
-
-}
-
 class DigioApiManager {
     private static let defaultSession = URLSession(configuration: .default)
 
+    public static var urlString = "https://7hgi9vtkdc.execute-api.sa-east-1.amazonaws.com/sandbox/products"
+
     static func getData(completion: @escaping (Digio?, String?) -> Void) throws {
 
-        let urlString = "https://7hgi9vtkdc.execute-api.sa-east-1.amazonaws.com/sandbox/products"
         var checkValid: Bool = true
 
         do {
-            checkValid = try validateUrl(urlString: urlString)
+            checkValid = try ValidatorsModel().validateUrl(urlString: urlString)
         } catch {
             print(error)
             throw CustomError.invalidUrl
         }
 
-        guard let apiUrl = URL(string: urlString), checkValid == true else {
+        do {
+            guard let apiUrl = URL(string: urlString), checkValid == true else {
+                throw CustomError.unsupportedUrl
+            }
+
+            try defaultSession.digioTask(with: apiUrl) { (data, response, error) in
+                let data = data
+                let error = error
+                print(response as Any)
+                print(error as Any)
+                DispatchQueue.main.async {
+                    completion(data, error?.localizedDescription)
+                }
+            }.resume()
+        } catch {
+            print(error)
             throw CustomError.unsupportedUrl
         }
 
-        defaultSession.digioTask(with: apiUrl) { (data, response, error) in
-            guard let data = data, error == nil else {
-                print(response as Any)
-                print(error as Any)
-                return
-            }
-
-            DispatchQueue.main.async {
-                completion(data, error?.localizedDescription)
-            }
-        }.resume()
     }
 }

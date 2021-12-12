@@ -12,6 +12,7 @@ class DetailController: UIViewController {
     var detailUrl = ""
     var detailName = ""
     var detailText = ""
+    var checkValid: Bool = true
 
     @IBOutlet weak var detailImageView: UIView!
     @IBOutlet weak var detailContainerView: UIView!
@@ -50,11 +51,18 @@ class DetailController: UIViewController {
         detailContainerText.layer.masksToBounds = true
         detailContainerText.layer.cornerRadius = 15
         detailTextBox.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        let currImage = detailUrl
-        if let data = NSData(contentsOf: URL(string: currImage)!) {
-            let cellImage = UIImage(data: data as Data)
-            detailimage.image = cellImage
+        detailimage.image = UIImage(named: "not_found")
 
+        let currImage = detailUrl
+        do {
+            self.checkValid = try ValidatorsModel().validateUrl(urlString: currImage)
+        } catch {
+            print(error)
+        }
+        if let data = NSData(contentsOf: URL(string: currImage)!), self.checkValid == true {
+            if let cellImage = UIImage(data: data as Data) {
+                detailimage.image = cellImage
+            }
         }
 
         detailLabel.text = detailName

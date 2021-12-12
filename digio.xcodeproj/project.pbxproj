@@ -11,16 +11,19 @@
 		5009F8D62763D5080084725C /* DigioDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009F8D52763D5080084725C /* DigioDataModel.swift */; };
 		5009F8D92763D6080084725C /* DigioApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009F8D82763D6080084725C /* DigioApiManager.swift */; };
 		50401A7627653C61007576B0 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50401A7527653C61007576B0 /* NetworkMonitor.swift */; };
+		506F031127664DCD002A624B /* digioApiManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F031027664DCD002A624B /* digioApiManagerTests.swift */; };
+		506F0313276652C8002A624B /* networkMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F0312276652C8002A624B /* networkMonitorTests.swift */; };
 		50965A18275A781300AEA4E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A17275A781300AEA4E0 /* AppDelegate.swift */; };
 		50965A1A275A781300AEA4E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A19275A781300AEA4E0 /* SceneDelegate.swift */; };
 		50965A1C275A781300AEA4E0 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A1B275A781300AEA4E0 /* HomeController.swift */; };
 		50965A1F275A781300AEA4E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50965A1D275A781300AEA4E0 /* Main.storyboard */; };
 		50965A21275A781500AEA4E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50965A20275A781500AEA4E0 /* Assets.xcassets */; };
 		50965A24275A781500AEA4E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50965A22275A781500AEA4E0 /* LaunchScreen.storyboard */; };
-		50965A2F275A781500AEA4E0 /* digioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A2E275A781500AEA4E0 /* digioTests.swift */; };
+		50965A2F275A781500AEA4E0 /* digioValidateUrlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A2E275A781500AEA4E0 /* digioValidateUrlTests.swift */; };
 		50965A39275A781500AEA4E0 /* digioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A38275A781500AEA4E0 /* digioUITests.swift */; };
 		50965A3B275A781500AEA4E0 /* digioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50965A3A275A781500AEA4E0 /* digioUITestsLaunchTests.swift */; };
 		50BDD498276125F300D27B44 /* BottomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BDD497276125F300D27B44 /* BottomCollectionViewCell.swift */; };
+		50C278E127662DED00D90B0E /* ValidatorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C278E027662DED00D90B0E /* ValidatorsModel.swift */; };
 		50F3B493275EC26E0030BD76 /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F3B492275EC26E0030BD76 /* TopCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +49,8 @@
 		5009F8D52763D5080084725C /* DigioDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigioDataModel.swift; sourceTree = "<group>"; };
 		5009F8D82763D6080084725C /* DigioApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigioApiManager.swift; sourceTree = "<group>"; };
 		50401A7527653C61007576B0 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		506F031027664DCD002A624B /* digioApiManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = digioApiManagerTests.swift; sourceTree = "<group>"; };
+		506F0312276652C8002A624B /* networkMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = networkMonitorTests.swift; sourceTree = "<group>"; };
 		50965A14275A781300AEA4E0 /* digio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = digio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50965A17275A781300AEA4E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50965A19275A781300AEA4E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,11 +60,12 @@
 		50965A23275A781500AEA4E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50965A25275A781500AEA4E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50965A2A275A781500AEA4E0 /* digioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = digioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		50965A2E275A781500AEA4E0 /* digioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = digioTests.swift; sourceTree = "<group>"; };
+		50965A2E275A781500AEA4E0 /* digioValidateUrlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = digioValidateUrlTests.swift; sourceTree = "<group>"; };
 		50965A34275A781500AEA4E0 /* digioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = digioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50965A38275A781500AEA4E0 /* digioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = digioUITests.swift; sourceTree = "<group>"; };
 		50965A3A275A781500AEA4E0 /* digioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = digioUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		50BDD497276125F300D27B44 /* BottomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCollectionViewCell.swift; sourceTree = "<group>"; };
+		50C278E027662DED00D90B0E /* ValidatorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorsModel.swift; sourceTree = "<group>"; };
 		50F3B492275EC26E0030BD76 /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,7 +142,9 @@
 		50965A2D275A781500AEA4E0 /* digioTests */ = {
 			isa = PBXGroup;
 			children = (
-				50965A2E275A781500AEA4E0 /* digioTests.swift */,
+				50965A2E275A781500AEA4E0 /* digioValidateUrlTests.swift */,
+				506F031027664DCD002A624B /* digioApiManagerTests.swift */,
+				506F0312276652C8002A624B /* networkMonitorTests.swift */,
 			);
 			path = digioTests;
 			sourceTree = "<group>";
@@ -165,6 +173,7 @@
 				50F3B492275EC26E0030BD76 /* TopCollectionViewCell.swift */,
 				50BDD497276125F300D27B44 /* BottomCollectionViewCell.swift */,
 				5009F8D52763D5080084725C /* DigioDataModel.swift */,
+				50C278E027662DED00D90B0E /* ValidatorsModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -326,6 +335,7 @@
 				5009F8D92763D6080084725C /* DigioApiManager.swift in Sources */,
 				50965A1C275A781300AEA4E0 /* HomeController.swift in Sources */,
 				50965A18275A781300AEA4E0 /* AppDelegate.swift in Sources */,
+				50C278E127662DED00D90B0E /* ValidatorsModel.swift in Sources */,
 				50BDD498276125F300D27B44 /* BottomCollectionViewCell.swift in Sources */,
 				5009F8D62763D5080084725C /* DigioDataModel.swift in Sources */,
 				5009F8D427638E210084725C /* DetailController.swift in Sources */,
@@ -338,7 +348,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50965A2F275A781500AEA4E0 /* digioTests.swift in Sources */,
+				50965A2F275A781500AEA4E0 /* digioValidateUrlTests.swift in Sources */,
+				506F0313276652C8002A624B /* networkMonitorTests.swift in Sources */,
+				506F031127664DCD002A624B /* digioApiManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

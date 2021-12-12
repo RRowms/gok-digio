@@ -222,8 +222,13 @@
                     <navigationItem key="navigationItem" id="eB5-hB-lzI"/>
                     <connections>
                         <outlet property="bottomCollectionView" destination="ki5-SS-mPp" id="U6R-ob-JPT"/>
+                        <outlet property="bottomProductsTitle" destination="s1T-w6-QPE" id="1vr-jO-0Df"/>
                         <outlet property="digioCashBanner" destination="OxS-9d-Xx3" id="Pyp-gK-RKu"/>
+                        <outlet property="middleBannerText" destination="Xbd-dm-ndV" id="sDh-zm-6sc"/>
+                        <outlet property="middleBannerTitle" destination="HVo-74-tUJ" id="3IG-yq-Bs7"/>
                         <outlet property="topCollectionView" destination="a5m-lI-vv6" id="aB8-CI-VpT"/>
+                        <outlet property="topLeftIcon" destination="JOt-Qa-HTP" id="N4l-Y3-1Da"/>
+                        <outlet property="topUserName" destination="Xv3-hQ-RVO" id="yJH-zh-mNJ"/>
                         <segue destination="dTM-lK-97W" kind="show" identifier="detailController" id="GP1-4C-5sZ"/>
                     </connections>
                 </viewController>
@@ -260,6 +265,7 @@
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yCD-KH-2hA">
                                                                 <rect key="frame" x="30" y="30" width="75" height="75"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="detailImageElement"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="75" id="4IC-D1-prD"/>
                                                                     <constraint firstAttribute="width" constant="75" id="ptU-iB-0Qy"/>
@@ -285,6 +291,7 @@
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5v-Dy-9H2">
                                                 <rect key="frame" x="185" y="73" width="209" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="detailLabelElement"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="bro-3U-HOs"/>
                                                 </constraints>
@@ -301,6 +308,7 @@
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Ujc-of-h6J">
                                                                 <rect key="frame" x="10" y="10" width="364" height="613"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="detailTextElement"/>
                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>

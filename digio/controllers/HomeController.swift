@@ -9,6 +9,12 @@ import UIKit
 
 class HomeController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    @IBOutlet weak var topLeftIcon: UIImageView!
+    @IBOutlet weak var topUserName: UILabel!
+    @IBOutlet weak var middleBannerText: UILabel!
+    @IBOutlet weak var middleBannerTitle: UILabel!
+    @IBOutlet weak var bottomProductsTitle: UILabel!
+
     @IBOutlet weak var topCollectionView: UICollectionView!
     @IBOutlet weak var bottomCollectionView: UICollectionView!
 
@@ -26,10 +32,16 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        topLeftIcon.isHidden = true
+        topUserName.isHidden = true
+        middleBannerText.isHidden = true
+        middleBannerTitle.isHidden = true
+        bottomProductsTitle.isHidden = true
+
         if NetworkMonitor.shared.isConnected {
             print("Connected to the internet!")
         } else {
-            print("No internet connection!")
+            // print("No internet connection!")
             alert(message: "Não foi possível acessar os dados, verique sua conexão com a internet!")
             NetworkMonitor.shared.stopMonitoring()
         }
@@ -38,6 +50,9 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
             try DigioApiManager.getData { data, error in
                 guard let data = data else {
                     print(error as Any)
+                    if data == nil {
+                        self.alert(message: "Não foi possível acessar os dados, verique sua conexão com a internet!")
+                    }
                     return
                 }
                 self.topItems = data.spotlight
@@ -47,19 +62,25 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
 
                 let digioCashImg = data.cash.bannerURL
                 do {
-                    self.checkValid = try validateUrl(urlString: digioCashImg)
-                } catch {
-                    print(error)
-                }
+                    self.checkValid = try ValidatorsModel().validateUrl(urlString: digioCashImg)
+                } catch { print(error) }
 
+                self.digioCashBanner.image = UIImage(named: "not_found")
                 if let imgdata = NSData(contentsOf: URL(string: digioCashImg)!), self.checkValid == true {
 
-                    let digioCashImg = UIImage(data: imgdata as Data)
-                    self.digioCashBanner.image = digioCashImg
+                    if let digioCashImg = UIImage(data: imgdata as Data) {
+                        self.digioCashBanner.image = digioCashImg
+                    }
                     self.digioCashBanner.layer.masksToBounds = true
                     self.digioCashBanner.layer.cornerRadius = 15
 
                 }
+                self.topLeftIcon.isHidden = false
+                self.topUserName.isHidden = false
+                self.middleBannerText.isHidden = false
+                self.middleBannerTitle.isHidden = false
+                self.bottomProductsTitle.isHidden = false
+
             }
 
         } catch {
@@ -92,13 +113,13 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
 
             let currImage = self.bottomItems[indexPath.row].imageURL
             do {
-                self.checkValid = try validateUrl(urlString: currImage)
+                self.checkValid = try ValidatorsModel().validateUrl(urlString: currImage)
             } catch {
                 print(error)
             }
+            cell.bottomCellImage.image = UIImage(named: "not_found")
             if let data = NSData(contentsOf: URL(string: currImage)!), self.checkValid == true {
-                let cellImage = UIImage(data: data as Data)
-                cell.bottomCellImage.image = cellImage
+                if let cellImage = UIImage(data: data as Data) { cell.bottomCellImage.image = cellImage }
             }
 
             cell.layer.cornerRadius = 15.0
@@ -119,7 +140,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
 
         let currImage = self.topItems[indexPath.row].bannerURL
         do {
-            self.checkValid = try validateUrl(urlString: currImage)
+            self.checkValid = try ValidatorsModel().validateUrl(urlString: currImage)
         } catch {
             print(error)
         }
